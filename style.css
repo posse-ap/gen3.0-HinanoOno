@@ -12,6 +12,7 @@ html{
 }
 
 header{
+
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -60,14 +61,96 @@ header{
   vertical-align: bottom;
 }
 
-.mainvisual{
+.mainvisual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.mainvisual-title {
+  height: 281px;
+  width: 500px;
+  display: inline-block;
+  background-color: #eff2f5;
+  padding: 0;
+  border-radius: 24px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.mainvisual-title p {
+  margin: 40px 0 15px 0;
+  line-height: 22px;
+  color: #0071bc;
+  font-weight: bold;
+}
+
+.mainvisual-title h1 {
+  margin: 0;
+  padding: 0 61px;
+  font-size: 60px;
+  line-height: 80px;
+  letter-spacing: 3px;
+  text-align: start;
+}
+
+.hero-img {
+  display: inline-block;
+  max-width: 1280px;
+  min-width: 396px;
+  width: 100%;
+  height: 100%;
+  margin-left: -125px;
+  z-index: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: calc(50% - 50vw);
+}
+
+.hero-img img {
+  width: 100%;
+  max-height: 680px;
+  height: 100%;
+  border-radius: 80px 0 0 80px;
+  object-fit: cover;
+}
+
+
+
+.scroll{
+  position: absolute;
+  bottom: 30px;
+  left: 32px;
+  font-size: 14px;
+  line-height: 21px;
+  color: #333;
+  z-index: 3;
+}
+
+.scroll::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #adadad;
+  margin-right: 6px;
+}
+/**.mainvisual{
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  max-width: 1280px;
+
 
 }
 .mainvisual-title{
+  align-items: center;
   flex-shrink: 0;
   text-align: center;
   background-color: #EFF2F5;
@@ -77,8 +160,9 @@ header{
   position: relative;
   top: 198px;
   left: 80px;
-  /**padding: 40px 62px;**/
-}
+  white-space: nowrap;
+  /**padding: 40px 62px;
+
 h1{
   margin-top: 40px;
   margin-bottom: 12px;
@@ -87,12 +171,16 @@ h1{
   color: #0071BC;
   line-height: 180%;
 }
+.mainvisual{
+  display: flex;
+
+}
 .mainvisual img{
   flex-shrink: 0;
-  display: block;
+  display: inline-block;
   width: 976px;
   height: 680px;
-  margin-left: auto;
+  margin-left: -25px;
   border-radius: 80px 0px 0px 80px;
 
 }
@@ -124,7 +212,7 @@ h1{
   text-align: center;
   left: 126px;
   top: 715px;
-}
+}**/
 
 .bigtitle{
   text-align: left;
