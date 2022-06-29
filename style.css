@@ -33,16 +33,6 @@ header{
   align-items: center;
   padding: 0;
 }
-/**.logo{
-  width: 148px;
-  height: 27.53px;
-}
-.nav-list1,.nav-list2{
-  margin-right: 32px;
-
-  color: #666666;
-  font-size: 14px;
-}**/
 .sns-icon1,.sns-icon2{
   border: 1px solid #EEEEEE;
   border-radius: 50%;
