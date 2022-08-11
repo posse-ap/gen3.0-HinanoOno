@@ -532,6 +532,7 @@ h2{
 
 }
 .quiz-question{
+  
   margin-top: 24px;
   font-size: 36px;
   font-weight: 700;
@@ -608,8 +609,7 @@ h2{
 
 .quiz-box-answer{
   display: none;
-  width: 942px;
-  height: 125px;
+  width: auto;
   background: #FFF2F5;
   border-radius: 8px;
   align-items: center;
@@ -625,8 +625,15 @@ h2{
   font-weight: 700;
   font-size: 24px;
   line-height: 150%;
-  color: #E34E70;
+  
 }
+.is-correct.quizBoxAnswerTitle{
+  color: #e34e70;
+}
+.is-incorrect.quizBoxAnswerTitle{
+  color: #0071BC;
+}
+
 .quizBoxAnswerLabel{
   margin-top: -5px;
   font-weight: 700;
@@ -671,5 +678,19 @@ h2{
 .answer-list-button-1.is-selected,.answer-list-button-2.is-selected,.answer-list-button-3.is-selected {
   background-color: #eff2f5;
   border-color: #0071bc;
+}
+
+
+
+
+
+.l-container {
+  margin: 0 auto;
+  max-width: auto;
+  padding: 0 24px;
+  width: 100%;
+}
+.p-quiz-container {
+  margin-top: 120px;
 }
 

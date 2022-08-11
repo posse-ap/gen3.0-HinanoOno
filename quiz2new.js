@@ -7,7 +7,7 @@ const ALL_QUIZ = [
   },
   {
     question: '既存業界のビジネスと、先進的なテクノロジーを結びつけて生まれた、新しいビジネスのことをなんと言うでしょう？',
-    answers: ['INTECH', 'BIZZTECH', 'X-TECH'],
+    answers: ['INTECH', 'cBIZZTECH', 'X-TECH'],
     correctNumber: 2,
   },
   {
@@ -32,57 +32,62 @@ const ALL_QUIZ = [
     correctNumber: 1,
     note: 'Accenture Technology Vision 2021'
   },
+  
+
 
 ];
 
 
-<div class="quiz5">
-  <section class="js-quiz" data-quiz="4">
-    <div class="quiz-question">
-      <section>
-        <div class="quiz-number">Q5</div>
-        <p class="quiz-question">イギリスのコンピューター科学者であるギャビン・ウッド氏が提唱した、ブロックチェーン技術を活用した「次世代分散型インターネット」のことをなんと言うでしょう？</p>
-      </section>
-      <div class="quiz-img">
-        <img src="./img/quiz/img-quiz05.png" alt="クイズ5">
-      </div>
-    </div>
-    <div class="question-answer">
-      <div class="answer-mark">A</div>
-      <ul class="answer-list">
-        <li>
-          <button class="answer-list-button-1" data-answer="0">Web3<img class="button-img-3" src="./img/icon/icon-arrow.svg" alt="クリック">
-          </button>
-            </li>
-        <li>
-          <button class="answer-list-button-2" data-answer="1">NFT<img class="button-img-2" src="./img/icon/icon-arrow.svg" alt="クリック">
-          </button>
-        </li>
-        <li>
-          <button class=" answer-list-button-3" data-answer="2">メタバース<img class="button-img-3" src="./img/iconicon-arrow.svg" alt="クリック">
-          </button>
-        </li>
-      </ul>
-      <div class="quiz-box-answer">
-        <p class="quizBoxAnswerTitle"></p>
-        <p class="quiz-box-answer-content">
-          <span class="quizBoxAnswerLabel"></span>
-          <span class="answertext"></span>
-        </p>
-      </div>
-    </div>
-  </section>
 
-</div>
 
-const quizQuestion=document.querySelectorAll('.quiz-question');
-for(let j=0; j<ALL_QUIZ.length; j++){
-  quizQuestion.innerText=ALL_QUIZ[j].question;
+const quizQuestion=document.getElementById('js-quizContainer');
+
+/**const quizQuestionProduct=ALL_QUIZ.map(item => item['question'])**/
+const quizMaker=(quiz,quizNumber) => {
+
+  const answersContent=quiz.answers.map((answer,answerNumber) => `<li>
+      <button class="answer-list-button-${answerNumber +1}" data-answer="${answerNumber}">${answer}<img class="button-img-${answerNumber +1}" src="./img/icon/icon-arrow.svg" alt="クリック">
+      </button>
+      </li>`
+    ).join('');
+  
+  const noteContent=quiz.note? `<div class="answer-reference">
+    <img src="./img/icon/icon-note.svg" alt="帽子マーク">
+    <p>${quiz.note}</p>
+  </div>` : '';
+
+  return `<div class="quiz1">
+    <section class="js-quiz" data-quiz="${quizNumber}">
+      <div class="quiz-question">
+        <section>
+          <div class="quiz-number">Q${quizNumber+1}</div>
+          <p class="quiz-question">${quiz.question}</p>
+        </section>
+        <div class="quiz-img">
+          <img src="./img/quiz/img-quiz0${quizNumber +1}.png" alt="クイズ2">
+        </div>
+      </div>
+      <div class="question-answer">
+        <div class="answer-mark">A</div>
+        <ul class="answer-list">
+          ${answersContent}
+        </ul>
+        <div class="quiz-box-answer">
+          <p class="quizBoxAnswerTitle"></p>
+          <p class="quiz-box-answer-content">
+            <span class="quizBoxAnswerLabel"></span>
+            <span class="answertext"></span>
+          </p>
+        </div>
+      </div>
+      ${noteContent}
+    </section> 
+  </div>`
 }
 
-
-
-
+quizQuestion.innerHTML=ALL_QUIZ.map((quiz,index) => {
+  return quizMaker(quiz,index)
+}).join('');
 
 
 
@@ -90,7 +95,7 @@ const answerList1=document.getElementsByClassName('answer-list-button-1');
 const answerList2=document.getElementsByClassName('answer-list-button-2');
 const answerList3=document.getElementsByClassName('answer-list-button-3');
 
-// すべての問題を取得
+
 
 const allQuiz=document.querySelectorAll('.js-quiz');
 const quizBoxAnswerTitleBefore = document.querySelectorAll('.quizBoxAnswerTitle');
