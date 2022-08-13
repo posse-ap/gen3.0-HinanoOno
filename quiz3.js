@@ -1,32 +1,38 @@
 const ALL_QUIZ = [
   {
+    id:1,
     question: '日本のIT人材が2030年には最大どれくらい不足すると言われているでしょうか？',
     answers: ['約28万人', '約79万人', '約183万人'],
     correctNumber: 1,
     note: '経済産業省 2019年3月 － IT 人材需給に関する調査'
   },
   {
+    id:2,
     question: '既存業界のビジネスと、先進的なテクノロジーを結びつけて生まれた、新しいビジネスのことをなんと言うでしょう？',
     answers: ['INTECH', 'cBIZZTECH', 'X-TECH'],
     correctNumber: 2,
   },
   {
+    id:3,
     question: 'IoTとは何の略でしょう？',
     answers: ['Internet of Things', 'Integrate into Technology', 'Information on Tool'],
     correctNumber: 0,
   },
   {
+    id:4,
     question: 'イギリスのコンピューター科学者であるギャビン・ウッド氏が提唱した、ブロックチェーン技術を活用した「次世代分散型インターネット」のことをなんと言うでしょう？',
     answers: ['Society 5.0', 'CyPhy', 'SDGs'],
     correctNumber: 0,
     note: 'Society5.0 - 科学技術政策 - 内閣府'
   },
   {
+    id:5,
     question: 'イギリスのコンピューター科学者であるギャビン・ウッド氏が提唱した、ブロックチェーン技術を活用した「次世代分散型インターネット」のことをなんと言うでしょう？',
     answers: ['Web3.0', 'NFT', 'メタバース'],
     correctNumber: 0,
   },
   {
+    id:6,
     question: '先進テクノロジー活用企業と出遅れた企業の収益性の差はどれくらいあると言われているでしょうか？',
     answers: ['約2倍', '約5倍', '約11倍'],
     correctNumber: 1,
@@ -44,22 +50,23 @@ const quizQuestion=document.getElementById('js-quizContainer');
 
 /**const quizQuestionProduct=ALL_QUIZ.map(item => item['question'])**/
 const quizMaker=(quiz,quizNumber) => {
-  
+
   const answersContent=quiz.answers.map((answer,answerNumber) =>
-   
   `<li>
       <button class="answer-list-button-${answerNumber +1}" data-answer="${answerNumber}">${answer}<img class="button-img-${answerNumber +1}" src="./img/icon/icon-arrow.svg" alt="クリック">
       </button>
       </li>`
 
-      
-    ).join('');
   
+    ).join('');
+ 
   
   const noteContent=quiz.note? `<div class="answer-reference">
     <img src="./img/icon/icon-note.svg" alt="帽子マーク">
     <p>${quiz.note}</p>
   </div>` : '';
+
+  
 
   return `<div class="quiz1">
     <section class="js-quiz" data-quiz="${quizNumber}">
@@ -69,7 +76,7 @@ const quizMaker=(quiz,quizNumber) => {
           <p class="quiz-question">${quiz.question}</p>
         </section>
         <div class="quiz-img">
-          <img src="./img/quiz/img-quiz0${quizNumber +1}.png" alt="クイズ2">
+          <img src="./img/quiz/img-quiz0${quiz.id}.png" alt="クイズ2">
         </div>
       </div>
       <div class="question-answer">
@@ -88,9 +95,22 @@ const quizMaker=(quiz,quizNumber) => {
       ${noteContent}
     </section> 
   </div>`
+
+  
 }
 
-quizQuestion.innerHTML=ALL_QUIZ.map((quiz,index) => {
+const shuffle=function shuffle(array){
+  for (let i = array.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+const quizShuffle = shuffle(ALL_QUIZ);
+
+
+quizQuestion.innerHTML=quizShuffle.map((quiz,index) => {
   return quizMaker(quiz,index)
 }).join('');
 
@@ -111,7 +131,6 @@ const buttonImg1=document.querySelectorAll('.button-img-1');
 const buttonImg2=document.querySelectorAll('.button-img-2');
 const buttonImg3=document.querySelectorAll('.button-img-3');
 
-
 allQuiz.forEach(quiz =>{
   for(let i=0; i < answerList1.length; i++){
     const dataAnswer = answerList1[i].getAttribute('data-answer');
@@ -120,7 +139,6 @@ allQuiz.forEach(quiz =>{
     const answerText=answerTextBefore[i];
     const indexNumber=ALL_QUIZ[i].correctNumber;
     const correctValue=ALL_QUIZ[i].answers[Number(ALL_QUIZ[i].correctNumber)];
-
 
     answerList1[i].addEventListener('click',function(){
       answerList1[i].classList.add('is-selected');
@@ -131,7 +149,6 @@ allQuiz.forEach(quiz =>{
       buttonImg1[i].style.visibility='hidden';
       buttonImg2[i].style.visibility='hidden';
       buttonImg3[i].style.visibility='hidden';
-
       if(isCorrect){
         quizBoxAnswerTitle.innerText='正解!';
         quizBoxAnswerLabel.innerText='A';
@@ -146,7 +163,6 @@ allQuiz.forEach(quiz =>{
         
   
       }
-      
     });
   }
   

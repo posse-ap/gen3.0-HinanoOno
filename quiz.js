@@ -62,6 +62,7 @@ allQuiz.forEach(quiz =>{
         quizBoxAnswerTitle.innerText='正解！';
         quizBoxAnswerLabel.innerText='A';
         answerText.innerText=correctValue;
+        quizBoxAnswerTitle.style.color='#e34e70';
       }
       else{
         quizBoxAnswerTitle.innerText='不正解...';
@@ -98,6 +99,7 @@ allQuiz.forEach(quiz =>{
         quizBoxAnswerTitle.innerText='正解!';
         quizBoxAnswerLabel.innerText='A';
         answerText.innerText=correctValue;
+        quizBoxAnswerTitle.style.color='#e34e70';
       }
       else{
         quizBoxAnswerTitle.innerText='不正解...';
@@ -134,6 +136,7 @@ allQuiz.forEach(quiz =>{
         quizBoxAnswerTitle.innerText='正解!';
         quizBoxAnswerLabel.innerText='A';
         answerText.innerText=correctValue;
+        quizBoxAnswerTitle.style.color='#e34e70';
       }
       else{
         quizBoxAnswerTitle.innerText='不正解...';
