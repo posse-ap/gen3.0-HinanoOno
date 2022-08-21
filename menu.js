@@ -1,4 +1,50 @@
-const ALL_QUIZ = [
+const ham = document.getElementById('js-hamburger'); 
+const hamburgerMenu=document.getElementById('js-hamburgerMenu');
+const hamburgerLine1=document.getElementById('js-hamburgerLine1');
+const hamburgerLine2=document.getElementById('js-hamburgerLine2');
+
+var count=0;
+function counter(){
+  count++;
+}
+ham.addEventListener('click', function () { //ハンバーガーメニューをクリックしたら
+  
+  counter();
+  console.log(count);
+
+  if(count%2===1){
+    hamburgerLine1.classList.add('active')
+    hamburgerLine2.classList.add('active')
+    hamburgerMenu.classList.add('active')
+  }
+  else{
+    hamburgerLine1.classList.remove('active')
+    hamburgerLine2.classList.remove('active')
+    hamburgerMenu.classList.remove('active')
+
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*:const ALL_QUIZ = [
   {
     id:1,
     question: '日本のIT人材が2030年には最大どれくらい不足すると言われているでしょうか？',
@@ -48,7 +94,7 @@ const ALL_QUIZ = [
 
 const quizQuestion=document.getElementById('js-quizContainer');
 
-/**const quizQuestionProduct=ALL_QUIZ.map(item => item['question'])**/
+/**const quizQuestionProduct=ALL_QUIZ.map(item => item['question'])
 const quizMaker=(quiz,quizNumber) => {
 
   const answersContent=quiz.answers.map((answer,answerNumber) =>
@@ -63,7 +109,7 @@ const quizMaker=(quiz,quizNumber) => {
   
   const noteContent=quiz.note? `<div class="answer-reference">
     <img src="./img/icon/icon-note.svg" alt="帽子マーク">
-    <p class="answer-reference-content">${quiz.note}</p>
+    <p>${quiz.note}</p>
   </div>` : '';
 
   
@@ -239,49 +285,4 @@ allQuiz.forEach(quiz =>{
     });
   }
   
-})
-
-
-
-const ham = document.getElementById('js-hamburger'); 
-const hamburgerMenu=document.getElementById('js-hamburgerMenu');
-const hamburgerLine1=document.getElementById('js-hamburgerLine1');
-const hamburgerLine2=document.getElementById('js-hamburgerLine2');
-
-var count=0;
-function counter(){
-  count++;
-}
-ham.addEventListener('click', function () { //ハンバーガーメニューをクリックしたら
-  
-  counter();
-  console.log(count);
-  const quizContainer=document.getElementById('js-quizContainer');
-  const lineAll=document.querySelector('.line');
-  const mainLine=document.querySelector('.main-line');
-  const lineBanner=document.querySelector('footer');
-  const hamburgerFooter=document.querySelector('.hamburger-footer');
-  if(count%2===1){
-    hamburgerLine1.classList.add('active')
-    hamburgerLine2.classList.add('active')
-    hamburgerMenu.classList.add('active')
-    quizContainer.style.display='none';
-    lineAll.style.display='none';
-    mainLine.style.display='none';
-    lineBanner.style.display='none';
-    hamburgerFooter.style.display='block';
-
-  }
-  else{
-    hamburgerLine1.classList.remove('active')
-    hamburgerLine2.classList.remove('active')
-    hamburgerMenu.classList.remove('active')
-    quizContainer.style.display='block';
-    lineAll.style.display='block';
-    mainLine.style.display='block';
-    lineBanner.style.display='block';
-    hamburgerFooter.style.display='none';
-
-  }
-
-});
+})**/
