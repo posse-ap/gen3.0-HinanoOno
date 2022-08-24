@@ -261,6 +261,7 @@ ham.addEventListener('click', function () { //ハンバーガーメニューを�
   const mainLine=document.querySelector('.main-line');
   const lineBanner=document.querySelector('footer');
   const hamburgerFooter=document.querySelector('.hamburger-footer');
+  const quizMain=document.querySelector('.quiz-main');
   if(count%2===1){
     hamburgerLine1.classList.add('active')
     hamburgerLine2.classList.add('active')
@@ -270,7 +271,7 @@ ham.addEventListener('click', function () { //ハンバーガーメニューを�
     mainLine.style.display='none';
     lineBanner.style.display='none';
     hamburgerFooter.style.display='block';
-
+    quizMain.style.display='none';
   }
   else{
     hamburgerLine1.classList.remove('active')
@@ -281,6 +282,7 @@ ham.addEventListener('click', function () { //ハンバーガーメニューを�
     mainLine.style.display='block';
     lineBanner.style.display='block';
     hamburgerFooter.style.display='none';
+    quizMain.style.display='block';
 
   }
 
