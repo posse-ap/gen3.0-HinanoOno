@@ -7,5 +7,6 @@ $button.click((e) => {
 })
 
 $closeButton.click(() => {
+  $container.removeClass('openModal');
 
 })

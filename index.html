@@ -13,14 +13,106 @@
 
 </head>
 
+
 <body>
   <div class="modal">
-    <div class="modal-content">
-      <p>モーダルが開きました。</p>
-    </div>
-    <button class="modal_close_button js-closeModal">×</button>
-  </div>
+      <div class="modal-wrapper">
+        <button class="modal-close js-closeModal">×</button>
+        <div class="modal-content">
+          <div class="modal-leftside">
+            <div class="study-day">
+              <P>学習日</P>
+              <input type="text">
+            </div>
+            <div class="study-contents">
+              <P>学習コンテンツ(複数選択可)</P>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="n" name="checkbox"checked="checked">
+                  <label for="n" class="checkbox">N予備校</label>
+                </div>
+                <div class="box-item">
+                  <input type="checkbox" id="dotinstall"name="checkbox" checked="checked">
+                  <label for="dotinstall" class="checkbox">ドットインストール</label>
+                </div> 
 
+
+              </div>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="posse" name="checkbox"checked="checked">
+                  <label for="posse" class="checkbox">posse課題</label>
+                </div>
+              </div> 
+            </div>
+            <div class="study-languages">
+              <P>学習言語(複数選択可)</P>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="html" name="checkbox"checked="checked">
+                  <label for="html" class="checkbox">HTML</label>
+                </div>
+                <div class="box-item">
+                  <input type="checkbox" id="css"name="checkbox" checked="checked">
+                  <label for="css" class="checkbox">CSS</label>
+                </div> 
+                <div class="box-item">
+                  <input type="checkbox" id="js"name="checkbox" checked="checked">
+                  <label for="js" class="checkbox">JavaScript</label>
+                </div> 
+              </div>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="php" name="checkbox"checked="checked">
+                  <label for="php" class="checkbox">PHP</label>
+                </div>
+                <div class="box-item">
+                  <input type="checkbox" id="Laravel"name="checkbox" checked="checked">
+                  <label for="Laravel" class="checkbox">Laravel</label>
+                </div> 
+                <div class="box-item">
+                  <input type="checkbox" id="sql"name="checkbox" checked="checked">
+                  <label for="sql" class="checkbox">SQL</label>
+                </div> 
+                <div class="box-item">
+                  <input type="checkbox" id="shell"name="checkbox" checked="checked">
+                  <label for="shell" class="checkbox">SHELL</label>
+                </div> 
+              </div>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="knowledge" name="checkbox"checked="checked">
+                  <label for="knowledge" class="checkbox">情報システム基礎知識(その他)</label>
+                </div>
+              </div>
+            </div>
+
+          
+  
+          </div>
+          <div class="modal-rightside">
+            <div class="study-time-sum">
+              <P>学習時間</P>
+              <input type="text">
+            </div>
+            <div class="twitter-comment">
+              <P>Twitter用コメント</P>
+              <input type="text">
+            </div>
+            <div class="twitter-share">
+              <input type="checkbox" id="share" name="checkbox"checked="checked">
+              <label for="share" class="checkbox"><p>Twitterにシェアする</p></label>
+            </div>
+
+    
+          </div>
+        </div>
+        <button class="modal-button">記録・投稿</button>
+      </div>
+
+    </div>
+  </div>
+  
   <header>
     <div class="header-main">
       <div class="header-title">
@@ -84,14 +176,13 @@
     
     </div>-->
 
-    <div class="date-area">
-      <div>＜</div><p>2020年10月</p><div>＞</div>
-    </div>
-  
-
     
 
   </main>
+
+  <div class="date-area">
+    <div>＜</div><p>2020年10月</p><div>＞</div>
+  </div>
 
 
 
