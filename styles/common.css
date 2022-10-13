@@ -1,0 +1,266 @@
+::before,
+::after {
+  border-style: solid;
+  border-width: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #f5f5f8;
+}
+
+
+header{
+  width: 100vw;
+  height: 64px;
+  background-color: white
+  ;
+}
+.header-main{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-title{
+  position: relative;
+  left: 30px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 20px;
+}
+.header-maintitle{
+
+}
+.header-subtitle{
+  color: #97b9d1;
+}
+.header-button{
+  position: relative;
+  right: 30px;
+  
+  background-image: linear-gradient(45deg, #0066cc 0%, #66ccff 100%);
+  box-shadow: 0px 5px 5px rgba(102,204,255,0.5);
+
+
+  color: white;
+  border-radius: 20px;
+  width: 150px;
+  border: none;
+  padding: 10px 0px;
+
+}
+.header-button a{
+  text-decoration: none;
+  color: white;
+}
+main {
+  display: flex;
+  background-color: #f5f5f8;
+  width: 100%;
+}
+.main-divider{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 50px 30px;
+}
+.main1{
+  display: grid;
+  grid-template-rows: 2fr 5fr;
+  width: 100%;
+  gap: 20px;
+}
+.study-time{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+ 
+}
+.rod-graph{
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 3px 3px 0px lightgray;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.rod-graph .rod-canvas{
+  
+}
+
+.main2{
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+.study-content,.study-language{
+  width: 100%;
+  background-color: white;
+  border-radius: 20px;
+  padding:40px 20px;
+  box-shadow: 0px 3px 3px 0px lightgray;
+}
+.inner-title{
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+.today-study,.month-study,.total-study{
+  border-radius: 20px;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  display: block;
+  text-align: center;
+  box-shadow: 0px 3px 3px 0px lightgray;
+  
+}
+
+.study-title{
+  color: #0066cc;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.study-number{
+  font-size: 32px;
+  font-weight: 700;
+}
+.study-hour{
+  font-size: 18px;
+  color: lightgray;
+  margin-top: 20px;
+}
+.date-area{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+}
+.date-area div{
+  color: #0066cc;
+  margin: 0 15px;
+}
+.sp-area{
+  display: none;
+}
+
+/*modalpage*/
+.container {
+  position: relative;
+  min-height: 100vh;
+}
+.modal{
+  display: none;
+  position: absolute;
+  inset: 0;
+}
+.modal:before{
+  content: "";
+  display: block;
+  background-color: rgba(0, 0, 0, .3);
+  position: absolute;
+  inset: 0;
+}
+.openModal{
+  display: block;
+  z-index: 2;
+}
+.modal-content{
+  position: absolute;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 768px){
+  body{
+    height: 100vh;
+  }
+  header{
+    background-color: white;
+  }
+  .main-divider{
+    display: block;
+    padding: 20px;
+  }
+  .main1{
+    display: block;
+    margin-bottom: 16px;
+  }
+  .study-time{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #97b9d1;
+  }
+  .study-number{
+    font-size: 28px;
+  }
+  .main2{
+    gap: 16px;
+    height: 300px;
+  }
+  .inner-title{
+    font-size: 18px;
+  }
+  .rod-graph{
+    margin-top: 16px;
+    height: 200px;
+  }
+  .study-content, .study-language {
+    padding: 20px 20px;
+  }
+  .header-button{
+    display: none;
+  }
+  .date-area{
+    display: none;
+  }
+  .sp-area{
+    display: block;
+    margin: 20px auto 0px;
+  }
+  .sp-date{
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+  }
+  .sp-date div{
+    color: #0066cc;
+    margin: 0 15px;
+  }
+  .sp-button{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    background-image: linear-gradient(45deg, #0066cc 0%, #66ccff 100%);
+    box-shadow: 0px 5px 5px rgba(102,204,255,0.5);
+    color: white;
+    border-radius: 20px;
+    font-size: 16px;
+    border: none;
+    padding: 10px 0px;
+    margin: 0 auto;
+  }
+  .sp-button a{
+    text-decoration: none;
+    color: white;
+  }
+}
+
+@media screen and(min-width:769px) {
+  html,body,main{
+    height: calc(100vh - 64px);
+  }
+  
+}

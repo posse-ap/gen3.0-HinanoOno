@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>posse</title>
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/common.css">
+  <script src="./js/jquery3.6.0.js" defer></script>
+  <script src="./js/script.js" defer></script>
+  
+
+</head>
+
+<body>
+  <div class="modal">
+    <div class="modal-content">
+      <p>モーダルが開きました。</p>
+    </div>
+    <button class="modal_close_button js-closeModal">×</button>
+  </div>
+
+  <header>
+    <div class="header-main">
+      <div class="header-title">
+        <h1 class="header-maintitle"><img src="./img/posselogo.svg" alt="posseロゴ"></h1>
+        <h2 class="header-subtitle">4th week</h2>
+      </div>
+      <div>      
+        <button class="header-button js-openModal">記録・投稿</button>
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    <seciton class="main-divider">
+      <div class="main1">
+        <div class="study-time">
+          <div class="today-study">
+            <div class="study-title">Today</div>
+            <span class="study-number">3</span>
+            <div class="study-hour">hour</div>
+
+          </div>
+          <div class="month-study">
+            <div class="study-title">Month</div>
+            <span class="study-number">120</span>
+            <div class="study-hour">hour</div>
+          </div>
+          <div class="total-study">
+            <div class="study-title">Total</div>
+            <span class="study-number">1348</span>
+            <div class="study-hour">hour</div>
+
+          </div>
+        </div>
+        <div class="rod-graph">
+          <canvas class="rod-canvas"></canvas>
+
+        </div>
+
+      </div>
+      <div class="main2">
+        <div class="study-language">
+          <div class="inner-title">学習言語</div>
+
+        </div>
+        <div class="study-content">
+          <div class="inner-title"> 学習コンテンツ</div>
+
+        </div>
+
+      </div>
+      
+    </section>
+    
+    <!--<div class="sp-area">
+      <div class="sp-date">
+        <div>＜</div><p>2020年10月</p><div>＞</div>
+      </div>
+      <button class="sp-button">
+        <a href="./modal.html">記録・投稿</a>
+      </button>
+    
+    </div>-->
+
+    <div class="date-area">
+      <div>＜</div><p>2020年10月</p><div>＞</div>
+    </div>
+  
+
+    
+
+  </main>
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  
+
+</body>
+</html>
