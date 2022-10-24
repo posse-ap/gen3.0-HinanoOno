@@ -60,16 +60,21 @@ header{
   color: white;
 }
 main {
-  display: flex;
   background-color: #f5f5f8;
-  width: 100%;
 }
 .main-divider{
-  width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 20px;
   padding: 20px 50px 30px;
+
+}
+@media screen and (min-width:768px) {
+  .main-divider{
+    height: 75vh;
+  }
+
+  
 }
 .main1{
   display: grid;
@@ -146,25 +151,35 @@ main {
   text-align: center;
   font-weight: 600;
 }
-.date-area div{
+.back-mark{
+  color: #97b9d1;
+}
+.front-mark{
   color: #0066cc;
+}
+.date-area div{
+  
   margin: 0 15px;
 }
+
 .sp-area{
   display: none;
 }
+
+
+
 
 /*modalpage*/
 .container {
   position: relative;
   min-height: 100vh;
 }
-.modal{
+.modal,.calendar-modal,.load-modal{
   display: none;
   position: absolute;
   inset: 0;
 }
-.modal:before{
+.modal:before,.calendar-modal:before,.load-modal:before{
   content: "";
   display: block;
   background-color: rgba(0, 0, 0, .3);
@@ -175,7 +190,7 @@ main {
   display: block;
   z-index: 2;
 }
-.modal-wrapper{
+.modal-wrapper,.modal-wrapper2{
   box-sizing: border-box;
   position: absolute;
   top: 50%;
@@ -187,6 +202,9 @@ main {
   width: 900px;
   height: auto;
   
+}
+.modal-wrapper2{
+  height: 502px;
 }
 .modal-content{
   padding: 0 56px;
@@ -211,7 +229,24 @@ main {
   color: #999;
   border: none;
 }
+.calendar-modal-close{
+  text-align: center;
+  line-height:  0px;
+  width: 35px;
+  height: 35px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  padding: 4px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-decoration: none;
+  font-size: 2em;
+  color: #999;
+  border: none;
 
+}
 .modal-leftside{
   display:grid;
   gap: 20px;
@@ -356,15 +391,93 @@ input[type=checkbox]:checked + .checkbox::after {
   color: white;
   font-size: 1.2vw;
 }
+/*calendar*/
+.calendar{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+.day-title{
+  color: #97b9d1;
+}
+.calendar td{
+  padding: 10px 15px;
 
+}
+
+/*#day-button{
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: 120%;
+}*/
+.decide-button{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  background-image: linear-gradient(45deg, #0066cc 0%, #66ccff 100%);
+  box-shadow: 0px 5px 5px rgba(102,204,255,0.5);
+  color: white;
+  border-radius: 20px;
+  width: 150px;
+  border: none;
+  padding: 10px 0px;
+  font-size: 1.2vw;
+}
+/*完了ページ*/
+.complete-content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+}
+.complete-alert{
+  font-size: 15px;
+  color:#90EE90;
+  margin-bottom: 15px;
+}
+.complete-message{
+  margin-top: 55px;
+  font-size: 22px;
+  line-height: 130%;
+}
+.check-mark{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #90EE90;
+  position: relative;
+}
+.check-mark:after{
+  content: "";
+
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  border-left:3px solid #fff;
+	border-bottom:3px solid #fff;
+	width:30px;
+	height:20px;
+
+	transform:rotate(-45deg);
+}
 @media screen and (max-width: 768px){
 
   .modal-wrapper{
     position: relative;
     width: 100vw;
-    margin-top: 60px;
-    height: 100%;
-    border-radius: 30px 30px 0px 0px;
+    margin-top: 185px;
+
+    border-radius: 30px ;
     padding: 20px;
   }
   .modal-close{
@@ -387,6 +500,7 @@ input[type=checkbox]:checked + .checkbox::after {
   }
   .study-contents p,.study-time-sum p,.study-languages p,.twitter-comment p,.study-languages p{
     margin-top: 24px;
+    font-size: 20px;
   }
   .modal-button{
     width: 100%;
@@ -421,6 +535,10 @@ input[type=checkbox]:checked + .checkbox::after {
     font-size: 28px;
   }
   .main2{
+    width: 100%;
+    box-sizing: border-box;
+
+
     gap: 16px;
     height: 300px;
   }
@@ -432,6 +550,8 @@ input[type=checkbox]:checked + .checkbox::after {
     height: 200px;
   }
   .study-content, .study-language {
+    width: 40%;
+
     padding: 20px 20px;
   }
   .header-button{
@@ -450,7 +570,7 @@ input[type=checkbox]:checked + .checkbox::after {
     margin: 30px auto;
   }
   .sp-date div{
-    color: #0066cc;
+
     margin: 0 15px;
   }
   .sp-button{
@@ -470,6 +590,20 @@ input[type=checkbox]:checked + .checkbox::after {
     text-decoration: none;
     color: white;
   }
+ 
+  .modal-wrapper2{
+    border-radius: 30px;
+    width: 100vw;
+    margin-top: 14px;
+
+  }
+  .sp-area{
+    display: block;
+  }
+  .modal:before,.calendar-modal:before,.load-modal:before{
+    height: 160%;
+  }
+  
 }
 
 @media screen and(min-width:769px) {

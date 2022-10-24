@@ -7,9 +7,17 @@
   <title>posse</title>
   <link rel="stylesheet" href="./styles/reset.css">
   <link rel="stylesheet" href="./styles/common.css">
-  <script src="./js/jquery3.6.0.js" defer></script>
-  <script src="./js/script.js" defer></script>
-  
+  <link rel="stylesheet" href="./styles/load.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <!-- 日本語化する場合は下記を追 記 -->
+ <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+
+
+
 
 </head>
 
@@ -22,7 +30,7 @@
           <div class="modal-leftside">
             <div class="study-day">
               <P>学習日</P>
-              <input type="text">
+              <input type="button" id="calendar-input">
             </div>
             <div class="study-contents">
               <P>学習コンテンツ(複数選択可)</P>
@@ -112,6 +120,33 @@
 
     </div>
   </div>
+  <div class="calendar-modal">
+    <div class="modal-wrapper2">
+      <button class="calendar-modal-close js-closeModal">←</button>
+      <div class="date-area">
+        <div class="front-mark">＜</div><p>2020年10月</p><div class="back-mark">＞</div>
+      </div>
+      <div class="sp-area">
+        <div class="sp-date">
+          <div class="front-mark">＜</div><p>2020年10月</p><div class="back-mark">＞</div>
+        </div>
+      </div>
+
+      <div class="calendar"></div>
+      <button class="decide-button">決定</button>
+    </div>
+
+  </div>
+  <div class="load-modal" >
+    
+    <div class="modal-wrapper2" id="loading">
+      <button class="modal-close js-closeLoad">×</button>
+      <div id="loading-main">
+
+      </div>
+    </div>
+
+  </div>
   
   <header>
     <div class="header-main">
@@ -125,7 +160,7 @@
     </div>
   </header>
   <main class="container">
-    <seciton class="main-divider">
+    <section class="main-divider">
       <div class="main1">
         <div class="study-time">
           <div class="today-study">
@@ -155,34 +190,42 @@
       <div class="main2">
         <div class="study-language">
           <div class="inner-title">学習言語</div>
+          <canvas class="language-circle" id="language-circle"></canvas>
 
         </div>
         <div class="study-content">
           <div class="inner-title"> 学習コンテンツ</div>
+          <canvas class="content-circle" id="content-circle" ></canvas>
 
         </div>
 
       </div>
+
+      <div class="sp-area">
+        <div class="sp-date">
+          <div class="front-mark">＜</div><p>2020年10月</p><div class="back-mark">＞</div>
+        </div>
+        <button class="sp-button js-openModal">
+          記録・投稿
+        </button>
+      
+      </div>
+  
+     
+    
       
     </section>
+    <div class="date-area">
+      <div class="front-mark">＜</div><p>2020年10月</p><div class="back-mark">＞</div>
+    </div>
     
-    <!--<div class="sp-area">
-      <div class="sp-date">
-        <div>＜</div><p>2020年10月</p><div>＞</div>
-      </div>
-      <button class="sp-button">
-        <a href="./modal.html">記録・投稿</a>
-      </button>
-    
-    </div>-->
+
+  
+  
 
     
 
   </main>
-
-  <div class="date-area">
-    <div>＜</div><p>2020年10月</p><div>＞</div>
-  </div>
 
 
 
@@ -191,6 +234,15 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+
+  <script src="./js/jquery3.6.0.js" defer></script>
+  <script src="./js/load.js" defer></script>
+  <script src="./js/script.js" defer></script>
+
+
+
+
+
   
 
 </body>
