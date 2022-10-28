@@ -17,12 +17,12 @@ const $calendarButton=$('.js-calendar-button')*/
 
 /*円グラフ*/
 window.onload=function(){
-  let context=document.querySelector("#language-circle").getContext('2d')
 
-
-  const language=[];
   
-  fetch('http://posse-task.anti-pattern.co.jp/1st-work/study_language.json')
+  let ctx=document.querySelector("#language-circle").getContext('2d')
+  /*const language=[];
+  
+   fetch('http://posse-task.anti-pattern.co.jp/1st-work/study_language.json')
     .then(response => {
       return response.json();
     })
@@ -42,35 +42,46 @@ window.onload=function(){
       
       
 
-      }
-      new Chart(context,{
+      }*/
+
+
+     new Chart(ctx,{
         type:'doughnut',
         data:{
-          labels:name,
+          labels:['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL','情報システム基礎知識(その他)'],
           datasets:[{
             backgroundColor:['#0000ff','#4682B4','#48D1CC','#33FFFF','#33CCFF','#DCC2FF','#9057FF','#5507FF'],
-            data:language,
+            data:[30, 20, 10, 5, 5, 20, 20, 10],
           }]
     
         },
         options:{
-          legend:{
-            position:'bottom',
+          plugins: {
+            
+            legend:{
+              position:'bottom',
+              
+            },
+            labels: {
+              render: 'percentage',
+              fontColor: 'white',
+              fontSize: 10,
+
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+    
           },
-          responsive: true,
-          maintainAspectRatio: false,
-  
-        }
+        },
       })
-      
 
       
-    })
+    }
     
   
   /*content circle*/
   let area=document.querySelector('#content-circle').getContext('2d')
-  const content=[]
+  /*const content=[]
   fetch('http://posse-task.anti-pattern.co.jp/1st-work/study_contents.json')
     .then(response =>{
       return response.json();
@@ -85,28 +96,42 @@ window.onload=function(){
           content.push(number)
 
         }
-      }
+      }*/
 
       new Chart(area,{
         type:'doughnut',
         data:{
-          labels:name,
+          labels: ["N予備校", "ドットインストール", "POSSE課題"],
+
           datasets:[{
             backgroundColor:['#0000ff','#4682B4','#48D1CC'],
-            data:content,
+            data: [40,20, 40],
           }]
     
         },
         options:{
-          legend:{
-            position:'bottom',
+          plugins: {
+            
+            legend:{
+              position:'bottom',
+              
+            },
+            labels: {
+              render: 'percentage',
+              fontColor: 'white',
+              fontSize: 10,
+
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+    
           },
-          responsive: true,
-          maintainAspectRatio: false,
-        }
+        },
+        
+        
       })
-    })
-    console.log(content)
+  
+
 
 
 
@@ -151,30 +176,32 @@ window.onload=function(){
               display:false
             },
             scales:{
-              xAxes:[{
+              x:{
                 scaleLabel:{
                   display:false
                 },
-                gridLines:{
-                  display:false
+                grid:{
+                  display:false,
+
                 },
                 ticks:{
                   maxRotation:0,
                   minRotation:0,
                   
-                  callback: function(value,index,values){
+                  callback: function(value,index){
+                  
                     if(index % 2 ===0){
                       return "";
                     }
-                    return value;
+                    return value+1;
                   }
                 }
-              }],
-              yAxes:[{
+              },
+              y:{
                 scaleLabel:{
                   display:false
                 },
-                gridLines:{
+                grid:{
                   display:false,
                   drawBorder:false
                 },
@@ -187,7 +214,12 @@ window.onload=function(){
                   }
                 }
       
-              }]
+              }
+            },
+            plugins:{
+              legend:{
+                display:false,
+              },
             },
             responsive: true,
             maintainAspectRatio: false,
@@ -197,36 +229,39 @@ window.onload=function(){
       })
 
 
-}
+
    /*calendar*/
    const calendarButton=$('#calendar-input')
    const calendarContainer=$('.calendar-modal')
-   const calendarCloseButton=$('.js-closeModal')
+   const calendarCloseButton=$('.js-closeCalendar')
 
    const calendarInput=document.getElementById('calendar-input')
    const decideButton=$('.decide-button')
 
-   
-   calendarButton.click(() =>{
-     calendarContainer.addClass('openModal')
-     $container.removeClass('openModal')
-   })
-   calendarCloseButton.click(()=>{
-     calendarContainer.removeClass('openModal')
-     $container.addClass('openModal')
+   const dataArea=document.getElementsByClassName('date-area')
+
+   calendarButton[0].addEventListener("click",()=>{
+    calendarContainer[0].classList.add('openModal')
+    $container[0].classList.remove('openModal')
+    dataArea[0].classList.add('open')
 
    })
-   decideButton.click(() => {
-    calendarContainer.removeClass('openModal')
-    $container.addClass('openModal')
-  })
+   calendarCloseButton[0].addEventListener("click",()=>{
+    calendarContainer[0].classList.remove('openModal')
+    $container[0].classList.add('openModal')
+    dataArea[0].classList.remove('open')
+
+   })
+   decideButton[0].addEventListener("click",()=>{
+    calendarContainer[0].classList.remove('openModal')
+    $container[0].classList.add('openModal')
+   })
+
+   
  
 
 
-
-
-
-   const weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+   /*const weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
    console.log(new Date())
    const date = new Date()
    const year = date.getFullYear()
@@ -239,10 +274,10 @@ window.onload=function(){
    let calendarHtml = '' // HTMLを組み立てる変数
 
    /*calendarHtml += '<h1>' + year  + '/' + month + '</h1>'*/
-   calendarHtml += '<table>'
+   //calendarHtml += '<table>'
 
    // 曜日の行を作成
-   for (let i = 0; i < weeks.length; i++) {
+   /*for (let i = 0; i < weeks.length; i++) {
        calendarHtml += '<td class="day-title">' + weeks[i] + '</td>'
    }
 
@@ -252,26 +287,13 @@ window.onload=function(){
        for (let d = 0; d < 7; d++) {
            if (w == 0 && d < startDay) {
                // 1行目で1日の曜日の前
-               calendarHtml += '<td><button id="day-button"></button></td>'
+               calendarHtml += '<td><button id="day-button" ></button></td>'
            } else if (dayCount > endDayCount) {
                // 末尾の日数を超えた
                calendarHtml += '<td><button id="day-button"></button></td>'
            } else {
-               calendarHtml += `<td><button id="day-button" value="${dayCount}" onclick=show(value);>` + dayCount + `</button></td>`
-               
-              function show(e){
-                var calendarNumber=year + '年' + month + '月' +e+'日'
-                
-              
-                console.log(calendarNumber)
-                calendarInput.value =calendarNumber
-                $closeButton.click(() => {
-                  $container.removeClass('openModal');
-                
-                })
-            
+               calendarHtml += `<td class="day-button">` + dayCount + `</td>`
 
-               }
                dayCount++
 
                
@@ -283,14 +305,27 @@ window.onload=function(){
        calendarHtml += '</tr>'
    }
    calendarHtml += '</table>'
-  
 
+  
    document.querySelector('.calendar').innerHTML = calendarHtml
 
-  
+
+   const dayButton=$('.day-button')
+   console.log(dayButton)
+   for(let i = 0; i <= dayButton.length - 1; i ++){
+     dayButton[i].addEventListener("click", () => {
+
+       for(let j = 0; j <= dayButton.length - 1; j++) {
+             dayButton[j].classList.remove("clicked")
+       }
+       dayButton[i].classList.toggle("clicked")
+       const calendarShow=document.getElementById('calendar-input')
+       calendarDay=year+'年'+month+'月'+dayButton[i].textContent+'日'
+       calendarShow.value=calendarDay
+       console.log(calendarShow.value)
+
+     })
+   }*/
 
    
- 
-
-
 

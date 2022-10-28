@@ -1,47 +1,130 @@
-/*const calendarButton=$('#calendar-input')
-const calendarContainer=$('.calendar-modal')
-const calendarCloseButton=$('.js-closeModal')
 
 
 
 
 
-calendarButton.click(() =>{
-  calendarContainer.addClass('openModal')
-  $container.removeClass('openModal')
+const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const today = new Date();
+// 月末だとずれる可能性があるため、1日固定で取得
+var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
 
-  var toJPN = { 
-    weekdays : ['日', '月', '火', '水', '木', '金', '土'],
-    months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月',
-              '8月', '9月', '10月', '11月', '12月'
-            ]
-   };
-  
-  // '月'を日本語化
-  flatpickr.init.prototype.l10n.months.longhand = toJPN.months;
-  
+// 初期表示
+showProcess(showDate)
 
-  flatpickr('#js-calendarShow')
+// 前の月表示
+function prev(){
+    showDate.setMonth(showDate.getMonth() - 1);
+    showProcess(showDate);
 
-})
+    const dayButton=document.getElementsByClassName('day-button')
+    for(let i = 0; i <= dayButton.length - 1; i ++){
+    dayButton[i].addEventListener("click", () => {
 
-calendarCloseButton.click(() =>{
-  calendarContainer.removeClass('openModal')
-  $container.addClass('openModal')
-  
-})
+      for(let j = 0; j <= dayButton.length - 1; j++) {
+            dayButton[j].classList.remove("clicked")
+      }
+      dayButton[i].classList.toggle("clicked")
+      const calendarShow=document.getElementById('calendar-input')
+      calendarDay=calendarTitle.innerHTML+dayButton[i].textContent+'日'
+      calendarShow.value=calendarDay
+      console.log(calendarShow.value)
 
-const decideButton=$('.decide-button')
-const calendarShow=document.getElementById('js-calendarShow')
-const calendarInput=document.getElementById('calendar-input')
-decideButton.click(() => {
-  console.log(calendarShow.value)
-  calendarInput.value =calendarShow.value
-  calendarContainer.removeClass('openModal')
-  $container.addClass('openModal')
+    })
+}
+}
 
-})
-$closeButton.click(() => {
-  $container.removeClass('openModal');
+// 次の月表示
+function next(){
+    showDate.setMonth(showDate.getMonth() + 1);
+    showProcess(showDate);
 
-})*/
+    const dayButton=document.getElementsByClassName('day-button')
+    for(let i = 0; i <= dayButton.length - 1; i ++){
+    dayButton[i].addEventListener("click", () => {
+
+      for(let j = 0; j <= dayButton.length - 1; j++) {
+            dayButton[j].classList.remove("clicked")
+      }
+      dayButton[i].classList.toggle("clicked")
+      const calendarShow=document.getElementById('calendar-input')
+      calendarDay=calendarTitle.innerHTML+dayButton[i].textContent+'日'
+      calendarShow.value=calendarDay
+      console.log(calendarShow.value)
+
+    })
+}  
+}
+
+// カレンダー表示
+function showProcess(date) {
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    const calendarTitle=document.querySelector('#title');
+    calendarTitle.innerHTML = year + "年 " + (month + 1) + "月";
+
+    var calendar = createProcess(year, month);
+    const calendarArea=document.querySelector('.calendar')
+    calendarArea.innerHTML= calendar;
+}
+
+// カレンダー作成
+function createProcess(year, month) {
+    // 曜日
+    var calendar = "<table><tr class='dayOfWeek'>";
+    for (var i = 0; i < week.length; i++) {
+        calendar += "<th>" + week[i] + "</th>";
+    }
+    calendar += "</tr>";
+
+    var count = 0;
+    var startDayOfWeek = new Date(year, month, 1).getDay();
+    var endDate = new Date(year, month + 1, 0).getDate();
+    var lastMonthEndDate = new Date(year, month, 0).getDate();
+    var row = Math.ceil((startDayOfWeek + endDate) / week.length);
+
+    // 1行ずつ設定
+    for (var i = 0; i < row; i++) {
+        calendar += "<tr>";
+        // 1colum単位で設定
+        for (var j = 0; j < week.length; j++) {
+            if (i == 0 && j < startDayOfWeek) {
+                // 1行目で1日まで先月の日付を設定
+                calendar += "<td class='disabled'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
+            } else if (count >= endDate) {
+                // 最終行で最終日以降、翌月の日付を設定
+                count++;
+                calendar += "<td class='disabled'>" + (count - endDate) + "</td>";
+            } else {
+                // 当月の日付を曜日に照らし合わせて設定
+                count++;
+                if(year == today.getFullYear()
+                  && month == (today.getMonth())
+                  && count == today.getDate()){
+                    calendar += "<td class='today'>" + count + "</td>";
+                } else {
+                    calendar += "<td class='day-button'>" + count + "</td>";
+                }
+            }
+        }
+        calendar += "</tr>";
+    }
+    return calendar;
+}
+
+const calendarTitle=document.querySelector('#title');
+
+const dayButton=document.getElementsByClassName('day-button')
+for(let i = 0; i <= dayButton.length - 1; i ++){
+    dayButton[i].addEventListener("click", () => {
+
+      for(let j = 0; j <= dayButton.length - 1; j++) {
+            dayButton[j].classList.remove("clicked")
+      }
+      dayButton[i].classList.toggle("clicked")
+      const calendarShow=document.getElementById('calendar-input')
+      calendarDay=calendarTitle.innerHTML+dayButton[i].textContent+'日'
+      calendarShow.value=calendarDay
+      console.log(calendarShow.value)
+
+    })
+}

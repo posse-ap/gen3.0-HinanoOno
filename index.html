@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./styles/reset.css">
   <link rel="stylesheet" href="./styles/common.css">
   <link rel="stylesheet" href="./styles/load.css">
+  <link rel="stylesheet" href="./styles/calendar.css">
 
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -36,20 +37,20 @@
               <P>学習コンテンツ(複数選択可)</P>
               <div class="box-wrapper">
                 <div class="box-item">
-                  <input type="checkbox" id="n" name="checkbox"checked="checked">
-                  <label for="n" class="checkbox">N予備校</label>
+                  <input type="checkbox" id="n" name="checkbox">
+                  <label for="n" class="n checkbox">N予備校</label>
                 </div>
                 <div class="box-item">
-                  <input type="checkbox" id="dotinstall"name="checkbox" checked="checked">
-                  <label for="dotinstall" class="checkbox">ドットインストール</label>
+                  <input type="checkbox" id="dotinstall"name="checkbox">
+                  <label for="dotinstall" class="dotinstall checkbox">ドットインストール</label>
                 </div> 
 
 
               </div>
               <div class="box-wrapper">
                 <div class="box-item">
-                  <input type="checkbox" id="posse" name="checkbox"checked="checked">
-                  <label for="posse" class="checkbox">posse課題</label>
+                  <input type="checkbox" id="posse" name="checkbox">
+                  <label for="posse" class="posse checkbox">posse課題</label>
                 </div>
               </div> 
             </div>
@@ -57,40 +58,40 @@
               <P>学習言語(複数選択可)</P>
               <div class="box-wrapper">
                 <div class="box-item">
-                  <input type="checkbox" id="html" name="checkbox"checked="checked">
-                  <label for="html" class="checkbox">HTML</label>
+                  <input type="checkbox" id="html" name="checkbox">
+                  <label for="html" class="html checkbox">HTML</label>
                 </div>
                 <div class="box-item">
-                  <input type="checkbox" id="css"name="checkbox" checked="checked">
-                  <label for="css" class="checkbox">CSS</label>
+                  <input type="checkbox" id="css"name="checkbox" >
+                  <label for="css" class="css checkbox">CSS</label>
                 </div> 
                 <div class="box-item">
-                  <input type="checkbox" id="js"name="checkbox" checked="checked">
-                  <label for="js" class="checkbox">JavaScript</label>
+                  <input type="checkbox" id="js"name="checkbox" >
+                  <label for="js" class="js checkbox">JavaScript</label>
                 </div> 
               </div>
               <div class="box-wrapper">
                 <div class="box-item">
-                  <input type="checkbox" id="php" name="checkbox"checked="checked">
-                  <label for="php" class="checkbox">PHP</label>
+                  <input type="checkbox" id="php" name="checkbox">
+                  <label for="php" class="php checkbox">PHP</label>
                 </div>
                 <div class="box-item">
-                  <input type="checkbox" id="Laravel"name="checkbox" checked="checked">
-                  <label for="Laravel" class="checkbox">Laravel</label>
+                  <input type="checkbox" id="Laravel"name="checkbox">
+                  <label for="Laravel" class="laravel checkbox">Laravel</label>
                 </div> 
                 <div class="box-item">
-                  <input type="checkbox" id="sql"name="checkbox" checked="checked">
-                  <label for="sql" class="checkbox">SQL</label>
+                  <input type="checkbox" id="sql"name="checkbox" >
+                  <label for="sql" class="sql checkbox">SQL</label>
                 </div> 
                 <div class="box-item">
-                  <input type="checkbox" id="shell"name="checkbox" checked="checked">
-                  <label for="shell" class="checkbox">SHELL</label>
+                  <input type="checkbox" id="shell"name="checkbox">
+                  <label for="shell" class="shell checkbox">SHELL</label>
                 </div> 
               </div>
               <div class="box-wrapper">
                 <div class="box-item">
-                  <input type="checkbox" id="knowledge" name="checkbox"checked="checked">
-                  <label for="knowledge" class="checkbox">情報システム基礎知識(その他)</label>
+                  <input type="checkbox" id="knowledge" name="checkbox">
+                  <label for="knowledge" class="knowledge checkbox">情報システム基礎知識(その他)</label>
                 </div>
               </div>
             </div>
@@ -105,11 +106,11 @@
             </div>
             <div class="twitter-comment">
               <P>Twitter用コメント</P>
-              <input type="text">
+              <input type="text" id="twitter-message">
             </div>
             <div class="twitter-share">
-              <input type="checkbox" id="share" name="checkbox"checked="checked">
-              <label for="share" class="checkbox"><p>Twitterにシェアする</p></label>
+              <input type="checkbox" id="share" name="checkbox">
+              <label for="share" class="share checkbox"><p>Twitterにシェアする</p></label>
             </div>
 
     
@@ -122,15 +123,16 @@
   </div>
   <div class="calendar-modal">
     <div class="modal-wrapper2">
-      <button class="calendar-modal-close js-closeModal">←</button>
+      <button class="calendar-modal-close js-closeCalendar">←</button>
+
       <div class="date-area">
-        <div class="front-mark">＜</div><p>2020年10月</p><div class="back-mark">＞</div>
+        <button class="front-mark" onclick="prev()">＜</button><p id="title"></p><button class="back-mark" onclick="next()">＞</button>
       </div>
-      <div class="sp-area">
+      <!--<div class="sp-area">
         <div class="sp-date">
-          <div class="front-mark">＜</div><p>2020年10月</p><div class="back-mark">＞</div>
+          <button class="front-mark" onclick="prev()">＜</button><p id="title"></p><button class="back-mark" onclick="next()">＞</button>
         </div>
-      </div>
+      </div>-->
 
       <div class="calendar"></div>
       <button class="decide-button">決定</button>
@@ -140,7 +142,7 @@
   <div class="load-modal" >
     
     <div class="modal-wrapper2" id="loading">
-      <button class="modal-close js-closeLoad">×</button>
+      <button class="modal-close js-closeload">×</button>
       <div id="loading-main">
 
       </div>
@@ -233,11 +235,17 @@
 
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" defer></script>
+  <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js
+  " defer></script>
 
   <script src="./js/jquery3.6.0.js" defer></script>
   <script src="./js/load.js" defer></script>
+  <script src="./js/bottom.js" defer></script>
+  <script src="./js/calendar.js"> defer</script>
   <script src="./js/script.js" defer></script>
+  
+  
 
 
 

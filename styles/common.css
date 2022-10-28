@@ -116,6 +116,7 @@ main {
 .inner-title{
   font-size: 24px;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 
 
@@ -150,12 +151,26 @@ main {
   justify-content: center;
   text-align: center;
   font-weight: 600;
+  align-items: center;
 }
 .back-mark{
+  font-size: 20px;
+  margin-left: 20px;
+  outline: none;
+  border: none;
+  background-color: transparent;
   color: #97b9d1;
 }
 .front-mark{
+  font-size: 20px;
+  margin-right: 20px;
+  outline: none;
+  border: none;
+  background-color: transparent;
   color: #0066cc;
+}
+#title{
+  text-align: center;
 }
 .date-area div{
   
@@ -308,6 +323,12 @@ input[type=checkbox]{
   border-radius: 50%;
 
 }
+
+.n-active{
+  
+
+}
+
 .twitter-share .checkbox::before{
   background:#0066cc;
   border: none;
@@ -363,6 +384,15 @@ input[type=checkbox]:checked + .checkbox::after {
   font-size: 1.2vw;
  
 }
+.box-active{
+  background-color:lightblue;
+}
+.active:before{
+  background-color: #0066cc;
+}
+.active:after{
+  color: white;
+}
 .twitter-share p{
   color: gray;
   margin-left: 5px;
@@ -402,16 +432,21 @@ input[type=checkbox]:checked + .checkbox::after {
   color: #97b9d1;
 }
 .calendar td{
-  padding: 10px 15px;
+  padding: 15px;
 
 }
 
-/*#day-button{
+#day-button{
   outline: none;
   border: none;
   background: transparent;
   font-size: 120%;
-}*/
+}
+.clicked{
+  background-color: #0066cc;
+  color: white;
+  border-radius: 50%;
+}
 .decide-button{
   position: relative;
   display: flex;
@@ -560,6 +595,9 @@ input[type=checkbox]:checked + .checkbox::after {
   .date-area{
     display: none;
   }
+  .open{
+    display: flex;
+  }
   .sp-area{
     display: block;
     margin: 20px auto 0px;
@@ -603,7 +641,10 @@ input[type=checkbox]:checked + .checkbox::after {
   .modal:before,.calendar-modal:before,.load-modal:before{
     height: 160%;
   }
-  
+  .calendar{
+    font-size: 14px;
+    margin: 0px auto 10px;
+  }
 }
 
 @media screen and(min-width:769px) {
@@ -612,3 +653,5 @@ input[type=checkbox]:checked + .checkbox::after {
   }
   
 }
+
+
