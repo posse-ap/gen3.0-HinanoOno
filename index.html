@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>posse</title>
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/common.css">
+  <link rel="stylesheet" href="./styles/load.css">
+  <link rel="stylesheet" href="./styles/calendar.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <!-- 日本語化する場合は下記を追 記 -->
+ <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+
+
+
+
+</head>
+
+
+<body>
+  <div class="modal">
+      <div class="modal-wrapper">
+        <button class="modal-close js-closeModal">×</button>
+        <div class="modal-content">
+          <div class="modal-leftside">
+            <div class="study-day">
+              <P>学習日</P>
+              <input type="button" id="calendar-input">
+            </div>
+            <div class="study-contents">
+              <P>学習コンテンツ(複数選択可)</P>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="n" name="checkbox">
+                  <label for="n" class="n checkbox">N予備校</label>
+                </div>
+                <div class="box-item">
+                  <input type="checkbox" id="dotinstall"name="checkbox">
+                  <label for="dotinstall" class="dotinstall checkbox">ドットインストール</label>
+                </div> 
+
+
+              </div>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="posse" name="checkbox">
+                  <label for="posse" class="posse checkbox">posse課題</label>
+                </div>
+              </div> 
+            </div>
+            <div class="study-languages">
+              <P>学習言語(複数選択可)</P>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="html" name="checkbox">
+                  <label for="html" class="html checkbox">HTML</label>
+                </div>
+                <div class="box-item">
+                  <input type="checkbox" id="css"name="checkbox" >
+                  <label for="css" class="css checkbox">CSS</label>
+                </div> 
+                <div class="box-item">
+                  <input type="checkbox" id="js"name="checkbox" >
+                  <label for="js" class="js checkbox">JavaScript</label>
+                </div> 
+              </div>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="php" name="checkbox">
+                  <label for="php" class="php checkbox">PHP</label>
+                </div>
+                <div class="box-item">
+                  <input type="checkbox" id="Laravel"name="checkbox">
+                  <label for="Laravel" class="laravel checkbox">Laravel</label>
+                </div> 
+                <div class="box-item">
+                  <input type="checkbox" id="sql"name="checkbox" >
+                  <label for="sql" class="sql checkbox">SQL</label>
+                </div> 
+                <div class="box-item">
+                  <input type="checkbox" id="shell"name="checkbox">
+                  <label for="shell" class="shell checkbox">SHELL</label>
+                </div> 
+              </div>
+              <div class="box-wrapper">
+                <div class="box-item">
+                  <input type="checkbox" id="knowledge" name="checkbox">
+                  <label for="knowledge" class="knowledge checkbox">情報システム基礎知識(その他)</label>
+                </div>
+              </div>
+            </div>
+
+          
+  
+          </div>
+          <div class="modal-rightside">
+            <div class="study-time-sum">
+              <P>学習時間</P>
+              <input type="text">
+            </div>
+            <div class="twitter-comment">
+              <P>Twitter用コメント</P>
+              <input type="text" id="twitter-message">
+            </div>
+            <div class="twitter-share">
+              <input type="checkbox" id="share" name="checkbox">
+              <label for="share" class="share checkbox"><p>Twitterにシェアする</p></label>
+            </div>
+
+    
+          </div>
+        </div>
+        <button class="modal-button">記録・投稿</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="calendar-modal">
+    <div class="modal-wrapper2">
+      <button class="calendar-modal-close js-closeCalendar">←</button>
+
+      <div class="date-area">
+        <button class="front-mark" onclick="prev()">＜</button><p id="title"></p><button class="back-mark" onclick="next()">＞</button>
+      </div>
+      <!--<div class="sp-area">
+        <div class="sp-date">
+          <button class="front-mark" onclick="prev()">＜</button><p id="title"></p><button class="back-mark" onclick="next()">＞</button>
+        </div>
+      </div>-->
+
+      <div class="calendar"></div>
+      <button class="decide-button">決定</button>
+    </div>
+
+  </div>
+  <div class="load-modal" >
+    
+    <div class="modal-wrapper2" id="loading">
+      <button class="modal-close js-closeload">×</button>
+      <div id="loading-main">
+
+      </div>
+    </div>
+
+  </div>
+  
+  <header>
+    <div class="header-main">
+      <div class="header-title">
+        <h1 class="header-maintitle"><img src="./img/posselogo.svg" alt="posseロゴ"></h1>
+        <h2 class="header-subtitle">4th week</h2>
+      </div>
+      <div>      
+        <button class="header-button js-openModal">記録・投稿</button>
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    <section class="main-divider">
+      <div class="main1">
+        <div class="study-time">
+          <div class="today-study">
+            <div class="study-title">Today</div>
+            <span class="study-number">3</span>
+            <div class="study-hour">hour</div>
+
+          </div>
+          <div class="month-study">
+            <div class="study-title">Month</div>
+            <span class="study-number">120</span>
+            <div class="study-hour">hour</div>
+          </div>
+          <div class="total-study">
+            <div class="study-title">Total</div>
+            <span class="study-number">1348</span>
+            <div class="study-hour">hour</div>
+
+          </div>
+        </div>
+        <div class="rod-graph">
+          <canvas class="rod-canvas"></canvas>
+
+        </div>
+
+      </div>
+      <div class="main2">
+        <div class="study-language">
+          <div class="inner-title">学習言語</div>
+          <canvas class="language-circle" id="language-circle"></canvas>
+
+        </div>
+        <div class="study-content">
+          <div class="inner-title"> 学習コンテンツ</div>
+          <canvas class="content-circle" id="content-circle" ></canvas>
+
+        </div>
+
+      </div>
+
+      <div class="sp-area">
+        <div class="sp-date">
+          <div class="front-mark">＜</div><p>2020年10月</p><div class="back-mark">＞</div>
+        </div>
+        <button class="sp-button js-openModal">
+          記録・投稿
+        </button>
+      
+      </div>
+  
+     
+    
+      
+    </section>
+    <div class="date-area">
+      <div class="front-mark">＜</div><p>2020年10月</p><div class="back-mark">＞</div>
+    </div>
+    
+
+  
+  
+
+    
+
+  </main>
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" defer></script>
+  <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js
+  " defer></script>
+
+  <script src="./js/jquery3.6.0.js" defer></script>
+  <script src="./js/load.js" defer></script>
+  <script src="./js/bottom.js" defer></script>
+  <script src="./js/calendar.js"> defer</script>
+  <script src="./js/script.js" defer></script>
+  
+  
+
+
+
+
+
+  
+
+</body>
+</html>
