@@ -11,16 +11,13 @@ $closeButton.click(() => {
 
 })
 
-/*const $calendarContainer=$('.calendar-modal')
-const $calendar=$('.calendar-modal')
-const $calendarButton=$('.js-calendar-button')*/
 
 /*円グラフ*/
 window.onload=function(){
 
   
   let ctx=document.querySelector("#language-circle").getContext('2d')
-  /*const language=[];
+  const language=[];
   
    fetch('http://posse-task.anti-pattern.co.jp/1st-work/study_language.json')
     .then(response => {
@@ -42,16 +39,16 @@ window.onload=function(){
       
       
 
-      }*/
+      }
 
 
      new Chart(ctx,{
         type:'doughnut',
         data:{
-          labels:['HTML', 'CSS', 'JavaScript', 'PHP', 'Laravel', 'SQL', 'SHELL','情報システム基礎知識(その他)'],
+          labels:name,
           datasets:[{
             backgroundColor:['#0000ff','#4682B4','#48D1CC','#33FFFF','#33CCFF','#DCC2FF','#9057FF','#5507FF'],
-            data:[30, 20, 10, 5, 5, 20, 20, 10],
+            data:language,
           }]
     
         },
@@ -76,18 +73,18 @@ window.onload=function(){
       })
 
       
-    }
+    })
     
   
   /*content circle*/
   let area=document.querySelector('#content-circle').getContext('2d')
-  /*const content=[]
+  const content=[]
   fetch('http://posse-task.anti-pattern.co.jp/1st-work/study_contents.json')
     .then(response =>{
       return response.json();
     })
     .then(data =>{
-      console.log(data)
+      
       for (const item of data){
         var name=Object.keys(item)
         for (const key of name){
@@ -96,16 +93,16 @@ window.onload=function(){
           content.push(number)
 
         }
-      }*/
+      }
 
       new Chart(area,{
         type:'doughnut',
         data:{
-          labels: ["N予備校", "ドットインストール", "POSSE課題"],
+          labels:name,
 
           datasets:[{
             backgroundColor:['#0000ff','#4682B4','#48D1CC'],
-            data: [40,20, 40],
+            data: content,
           }]
     
         },
@@ -128,7 +125,7 @@ window.onload=function(){
           },
         },
         
-        
+      }) 
       })
   
 
@@ -227,7 +224,7 @@ window.onload=function(){
           
         })
       })
-
+    }
 
 
    /*calendar*/
@@ -261,71 +258,4 @@ window.onload=function(){
  
 
 
-   /*const weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-   console.log(new Date())
-   const date = new Date()
-   const year = date.getFullYear()
-   const month = date.getMonth() + 1
-   const startDate = new Date(year, month - 1, 1) // 月の最初の日を取得
-   const endDate = new Date(year, month,  0) // 月の最後の日を取得
-   const endDayCount = endDate.getDate() // 月の末日
-   const startDay = startDate.getDay() // 月の最初の日の曜日を取得
-   let dayCount = 1 // 日にちのカウント
-   let calendarHtml = '' // HTMLを組み立てる変数
-
-   /*calendarHtml += '<h1>' + year  + '/' + month + '</h1>'*/
-   //calendarHtml += '<table>'
-
-   // 曜日の行を作成
-   /*for (let i = 0; i < weeks.length; i++) {
-       calendarHtml += '<td class="day-title">' + weeks[i] + '</td>'
-   }
-
-   for (let w = 0; w < 6; w++) {
-       calendarHtml += '<tr>'
-
-       for (let d = 0; d < 7; d++) {
-           if (w == 0 && d < startDay) {
-               // 1行目で1日の曜日の前
-               calendarHtml += '<td><button id="day-button" ></button></td>'
-           } else if (dayCount > endDayCount) {
-               // 末尾の日数を超えた
-               calendarHtml += '<td><button id="day-button"></button></td>'
-           } else {
-               calendarHtml += `<td class="day-button">` + dayCount + `</td>`
-
-               dayCount++
-
-               
-
-  
-               
-           }
-       }
-       calendarHtml += '</tr>'
-   }
-   calendarHtml += '</table>'
-
-  
-   document.querySelector('.calendar').innerHTML = calendarHtml
-
-
-   const dayButton=$('.day-button')
-   console.log(dayButton)
-   for(let i = 0; i <= dayButton.length - 1; i ++){
-     dayButton[i].addEventListener("click", () => {
-
-       for(let j = 0; j <= dayButton.length - 1; j++) {
-             dayButton[j].classList.remove("clicked")
-       }
-       dayButton[i].classList.toggle("clicked")
-       const calendarShow=document.getElementById('calendar-input')
-       calendarDay=year+'年'+month+'月'+dayButton[i].textContent+'日'
-       calendarShow.value=calendarDay
-       console.log(calendarShow.value)
-
-     })
-   }*/
-
    
-
